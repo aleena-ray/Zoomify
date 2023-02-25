@@ -128,23 +128,33 @@ function App(props: AppProps) {
     };
   }, [zmClient, topic, signature, userName, password]);
 
-  const onJoinSession = useCallback(async () => {
+  const onStartVideo = useCallback(async () => {
     try {
-      await zmClient.join(topic, signature, userName, password).catch((e) => {});
       const stream = zmClient.getMediaStream();
-      stream.startVideo();
+      if (status === "closed") {
+        await zmClient.join(topic, signature, userName, password).catch((e) => {
+          console.log(e);
+        });
+        setStatus("connected")
+        
+        await stream.startVideo();
 
+      } else if (status === "connected") {
+        zmClient.leave();
+        setStatus("closed")
+        await stream.stopVideo();
+      }
     } catch (e: any) {
       message.error(e.reason);
     }
-  }, [zmClient, topic, signature, userName, password]);
+  }, [zmClient, topic, signature, userName, password, status]);
 
   return (
     <div className="App">
       <ZoomMediaContext.Provider value={mediaContext}>
-
+        <button onClick={onStartVideo}>Turn on and off Video</button>
       </ZoomMediaContext.Provider>
-      <button onClick={onJoinSession}></button>
+      
     </div>
   );
 }

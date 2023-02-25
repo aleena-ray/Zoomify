@@ -5,28 +5,25 @@ export function generateVideoToken(
   sdkSecret: string,
   topic: string,
   passWord = '',
-  userIdentity = '',
-  sessionKey = '',
-  roleType = 1
+  sessionKey = ''
 ) {
   let signature = '';
   try {
-    const iat = Math.round(new Date().getTime() / 1000);
-    const exp = iat + 60 * 60 * 2;
+    const iat = Math.round(new Date().getTime() / 1000) - 30;
+    const exp = iat + 60 * 60 * 2
 
     // Header
     const oHeader = { alg: 'HS256', typ: 'JWT' };
     // Payload
     const oPayload = {
       app_key: sdkKey,
-      iat,
-      exp,
       tpc: topic,
-      pwd: passWord,
-      user_identity: userIdentity,
+      role_type: 0,
+      user_identity: '',
       session_key: sessionKey,
-      role_type: roleType // role = 1 for host, 0 for attendee; a host must first start a session for attendees to join
-      // topic
+      version: 1,
+      iat: iat,
+      exp: exp
     };
     const sHeader = JSON.stringify(oHeader);
     const sPayload = JSON.stringify(oPayload);
@@ -34,6 +31,7 @@ export function generateVideoToken(
   } catch (e) {
     console.error(e);
   }
+  console.log(signature);
   return signature;
 }
 

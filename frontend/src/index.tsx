@@ -63,17 +63,13 @@ if (meetingArgs.web) {
   }
 }
 
-
-
 if (!meetingArgs.signature && meetingArgs.sdkSecret && meetingArgs.topic) {
   meetingArgs.signature = generateVideoToken(
     meetingArgs.sdkKey,
     meetingArgs.sdkSecret,
     meetingArgs.topic,
     meetingArgs.password,
-    meetingArgs.userIdentity,
-    meetingArgs.sessionKey,
-    parseInt(meetingArgs.role, 10)
+    meetingArgs.sessionKey
   );
 }
 console.log('=====================================');
