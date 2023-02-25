@@ -130,12 +130,110 @@ function App(props: AppProps) {
       },
     },
     {
-      command: "turn off my video",
+        command: "turn on video",
+        callback: () => {
+          console.log("omg turn on!!")
+          zmClient.getMediaStream().startVideo();
+        },
+      },
+      {
+        command: "turn off my video",
+        callback: () => {
+          console.log("omg turn off!!")
+          zmClient.getMediaStream().startVideo();
+        },
+      },
+      {
+        command: "turn off video",
+        callback: () => {
+          console.log("omg turn off!!")
+          zmClient.getMediaStream().startVideo();
+        },
+      },
+    {
+      command: "screen on",
       callback: () => {
-        console.log("omg turn off!!")
+        console.log("omg turn on!!")
         zmClient.getMediaStream().stopVideo();
       },
     },
+    {
+        command: "screen off",
+        callback: () => {
+          console.log("omg turn off!!")
+          zmClient.getMediaStream().stopVideo();
+        },
+      },
+      {
+        command: "share screen",
+        callback: () => {
+          console.log("omg turn on!!")
+          zmClient.getMediaStream().stopVideo();
+        },
+      },
+      {
+        command: "share my screen",
+        callback: () => {
+          console.log("omg turn on!!")
+          zmClient.getMediaStream().stopVideo();
+        },
+      },
+      {
+        command: "stop sharing",
+        callback: () => {
+          console.log("omg turn off!!")
+          zmClient.getMediaStream().stopVideo();
+        },
+      },
+      {
+        command: "stop sharing",
+        callback: () => {
+          console.log("omg turn off!!")
+          zmClient.getMediaStream().stopVideo();
+        },
+      },
+      {
+        command: "stop sharing",
+        callback: () => {
+          console.log("omg turn off!!")
+          zmClient.getMediaStream().stopVideo();
+        },
+      },
+      {
+        command: "hang up",
+        callback: () => {
+          console.log("omg leave!!")
+          zmClient.getMediaStream().hangup()
+        },
+      },
+      {
+        command: "leave call",
+        callback: () => {
+          console.log("omg leave!!")
+          zmClient.getMediaStream().hangup()
+        },
+      },
+      {
+        command: "log off",
+        callback: () => {
+          console.log("omg leave!!")
+          zmClient.getMediaStream().hangup()
+        },
+      },
+      {
+        command: "mute",
+        callback: () => {
+          console.log("omg mute!!")
+          zmClient.getMediaStream().muteAudio()
+        },
+      },
+      {
+        command: "unmute",
+        callback: () => {
+          console.log("omg unmute!!")
+          zmClient.getMediaStream().unmuteAudio()
+        },
+      },
   ];
 
   const {
