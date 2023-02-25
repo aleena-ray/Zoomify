@@ -86,17 +86,17 @@ const VideoFooter = (props: VideoFooterProps) => {
           }
         }
       } else {
-        const startVideoOptions = { hd: true };
+        const startVideoOptions = { hd: false };
         if (mediaStream?.isSupportVirtualBackground() && isBlur) {
           Object.assign(startVideoOptions, { virtualBackground: { imageUrl: 'blur' } });
         }
+        
         await mediaStream?.startVideo(startVideoOptions);
         if (!mediaStream?.isSupportMultipleVideos()) {
           const canvasElement = document.querySelector(`#${SELF_VIDEO_ID}`) as HTMLCanvasElement;
           mediaStream?.renderVideo(canvasElement, zmClient.getSessionInfo().userId, 254, 143, 0, 0, 3);
         }
       }
-
       setIsStartedVideo(true);
     }
   }, [mediaStream, isStartedVideo, zmClient, isBlur]);
