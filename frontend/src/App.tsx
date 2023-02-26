@@ -123,31 +123,31 @@ function App(props: AppProps) {
 
   const commands = [
     {
-      command: "turn on my video",
-      callback: () => {
-        console.log("omg turn on!!")
-        zmClient.getMediaStream().startVideo();
-      },
+        command: "Turn on my video.",
+        callback: () => {
+            console.log("omg turn on!!")
+            zmClient.getMediaStream().startVideo();
+        },
     },
     {
         command: "turn on video",
         callback: () => {
-          console.log("omg turn on!!")
-          zmClient.getMediaStream().startVideo();
+            console.log("omg turn on!!")
+            zmClient.getMediaStream().startVideo();
         },
       },
-      {
+    {
         command: "turn off my video",
         callback: () => {
-          console.log("omg turn off!!")
-          zmClient.getMediaStream().startVideo();
+            console.log("omg turn off!!")
+            zmClient.getMediaStream().startVideo();
         },
       },
       {
         command: "turn off video",
         callback: () => {
-          console.log("omg turn off!!")
-          zmClient.getMediaStream().startVideo();
+            console.log("omg turn off!!")
+            zmClient.getMediaStream().startVideo();
         },
       },
     {
